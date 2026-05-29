@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>盧柏安 | Portfolio</title>
+  <meta name="description" content="柏安的個人技術作品集，專注於機器學習、智慧交通系統、電腦視覺、邊緣 AI 部署與資安測試。" />
+
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --border: #e5e7eb;
+      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC",
+        "Microsoft JhengHei", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(100% - 40px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: var(--text);
+      color: #fff;
+      padding: 9px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: flex;
+      align-items: center;
+      padding: 72px 0;
+      background:
+        linear-gradient(rgba(247, 248, 251, 0.72), rgba(247, 248, 251, 0.96)),
+        url("banner.jpg") center / cover no-repeat;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      margin-bottom: 18px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      line-height: 1.08;
+      margin-bottom: 20px;
+      letter-spacing: -1.8px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 10px 22px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .profile-card {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(229, 231, 235, 0.9);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 210px;
+      height: 210px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      border: 8px solid #fff;
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.14);
+    }
+
+    .profile-card h2 {
+      font-size: 1.45rem;
+      margin-bottom: 6px;
+    }
+
+    .profile-card p {
+      margin: 0;
+      font-size: 0.96rem;
+    }
+
+    /* Sections */
+    section {
+      padding: 86px 0;
+    }
+
+    .section-title {
+      margin-bottom: 34px;
+      text-align: center;
+    }
+
+    .section-title span {
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.92rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-top: 8px;
+      letter-spacing: -0.8px;
+    }
+
+    .section-title p {
+      max-width: 680px;
+      margin: 10px auto 0;
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .about-highlight {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: #fff;
+    }
+
+    .about-highlight p {
+      color: rgba(255, 255, 255, 0.86);
+      margin-top: 12px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.5rem;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .skill {
+      padding: 22px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .skill:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .skill-icon {
+      width: 75px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(96, 165, 250, 0.14);
+      color: var(--primary);
+      font-weight: 900;
+      margin-bottom: 14px;
+      font-size: 0.85rem;
+    }
+
+    .skill h3 {
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+
+    .skill p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Portfolio */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .project {
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .project-image {
+      height: 170px;
+      background:
+        linear-gradient(135deg, rgba(37, 99, 235, 0.86), rgba(79, 70, 229, 0.86)),
+        url("banner.jpg") center / cover no-repeat;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.15rem;
+    }
+
+    .project-body {
+      padding: 22px;
+    }
+
+    .project-body p {
+      color: var(--muted);
+      margin: 10px 0 16px;
+      font-size: 0.95rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: #4b5563;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    /* Links & Contact */
+    .link-grid,
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .link-card,
+    .contact-card {
+      display: block;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .link-card:hover,
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .link-card h3,
+    .contact-card h3 {
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+
+    .link-card p,
+    .contact-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      word-break: break-word;
+    }
+
+    /* Footer */
+    footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      background: #fff;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 46px;
+      height: 46px;
+      display: none;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.28);
+    }
+
+    .back-to-top.show {
+      display: grid;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px) {
+      .hero-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 54px 0;
+      }
+
+      .profile-card {
+        max-width: 420px;
+        margin: 0 auto;
+      }
+
+      .skills-grid,
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .link-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container {
+        width: min(100% - 28px, var(--max-width));
+      }
+
+      .nav {
+        height: 66px;
+      }
+
+      .menu-btn {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 66px;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        padding: 10px 20px 18px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 12px 0;
+      }
+
+      section {
+        padding: 64px 0;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 48px 0 64px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .avatar {
+        width: 170px;
+        height: 170px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid,
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    :root {
+    --bg: #0f172a;
+    --card: #111827;
+    --text: #f9fafb;
+    --muted: #9ca3af;
+    --primary: #60a5fa;
+    --primary-dark: #3b82f6;
+    --border: rgba(255, 255, 255, 0.1);
+    --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    body {
+    background: var(--bg);
+    color: var(--text);
+    }
+
+    /* Header */
+    header {
+    background: rgba(15, 23, 42, 0.86);
+    border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+    color: var(--text);
+    }
+
+    .nav-links a {
+    color: var(--muted);
+    }
+
+    .nav-links a:hover {
+    color: var(--primary);
+    }
+
+    .menu-btn {
+    background: var(--primary);
+    color: #0f172a;
+    }
+
+    /* Hero */
+    .hero {
+    background:
+        linear-gradient(rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.96)),
+        url("banner.jpg") center / cover no-repeat;
+    }
+
+    .badge {
+    background: rgba(17, 24, 39, 0.82);
+    border: 1px solid var(--border);
+    color: var(--primary);
+    }
+
+    .hero p {
+    color: var(--muted);
+    }
+
+    .btn-primary {
+    background: var(--primary);
+    color: #0f172a;
+    }
+
+    .btn-primary:hover {
+    background: var(--primary-dark);
+    color: #fff;
+    }
+
+    .btn-outline {
+    background: rgba(17, 24, 39, 0.78);
+    color: var(--text);
+    border-color: var(--border);
+    }
+
+    /* Cards */
+    .card,
+    .profile-card,
+    .skill,
+    .link-card,
+    .contact-card {
+    background: rgba(17, 24, 39, 0.92);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    }
+
+    .profile-card {
+    background: rgba(17, 24, 39, 0.86);
+    }
+
+    .avatar {
+    border-color: #1f2937;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    .profile-card p,
+    .section-title p,
+    .about-text p,
+    .skill p,
+    .project-body p,
+    .link-card p,
+    .contact-card p {
+    color: var(--muted);
+    }
+
+    /* About */
+    .about-highlight {
+    background: linear-gradient(135deg, #1d4ed8, #3730a3);
+    color: #fff;
+    }
+
+    .about-highlight p {
+    color: rgba(255, 255, 255, 0.82);
+    }
+
+    .stat {
+    background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* Skills */
+    .skill-icon {
+    background: rgba(96, 165, 250, 0.14);
+    color: var(--primary);
+    }
+
+    /* Portfolio */
+    .project-image {
+    background:
+        linear-gradient(135deg, rgba(37, 99, 235, 0.78), rgba(79, 70, 229, 0.78)),
+        url("banner.jpg") center / cover no-repeat;
+    }
+
+    .tag {
+    background: rgba(255, 255, 255, 0.08);
+    color: #d1d5db;
+    }
+
+    /* Links & Contact */
+    .link-card h3,
+    .contact-card h3 {
+    color: var(--primary);
+    }
+
+    /* Footer */
+    footer {
+    background: #020617;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    }
+
+    /* Back to top */
+    .back-to-top {
+    background: var(--primary);
+    color: #0f172a;
+    }
+
+    /* Mobile Menu */
+    @media (max-width: 680px) {
+    .nav-links {
+        background: #020617;
+        border-bottom: 1px solid var(--border);
+    }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav container">
+      <a href="#home" class="logo">柏安的個人網站 <span>AI × 智慧交通 × 資安</span></a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="開啟選單">
+        選單
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">首頁</a></li>
+        <li><a href="#about">關於我</a></li>
+        <li><a href="#skills">技能</a></li>
+        <li><a href="#portfolio">作品集</a></li>
+        <li><a href="#links">連結</a></li>
+        <li><a href="#contact">聯絡</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">Machine Learning / Intelligent Transportation / SBOM / IEC 62443</div>
+          <h1>你好，我是 <span>柏安</span></h1>
+          <p>
+            我專注於機器學習、智慧交通系統、SBOM 軟體供應鏈安全與 IEC 62443 工控資安，
+            擅長將 AI 模型、影像辨識、車流分析與資安檢測方法整合到實際應用場景中。
+          </p>
+
+          <div class="hero-actions">
+            <a href="#portfolio" class="btn btn-primary">查看專案</a>
+            <a href="#contact" class="btn btn-outline">聯絡我</a>
+          </div>
+        </div>
+
+        <div class="profile-card">
+          <img src="avatar.jpg" alt="個人頭像" class="avatar" />
+          <h2>盧柏安</h2>
+          <p>AI Engineer / ITS Developer / Security Tester</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <span>About</span>
+          <h2>關於我</h2>
+          <p>結合 AI、交通應用與資安思維，打造更智慧也更可靠的系統。</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="card about-highlight">
+            <h3>我關注 AI 技術在真實環境中的落地應用。</h3>
+            <p>
+              從模型訓練、影像辨識、邊緣裝置部署，到智慧交通資料分析與系統安全檢測，
+              我重視的不只是功能可用，更包含穩定性、可維護性與安全性。
+            </p>
+
+            <div class="stats">
+              <div class="stat">
+                <strong>AI</strong>
+                模型應用
+              </div>
+              <div class="stat">
+                <strong>ITS</strong>
+                智慧交通
+              </div>
+              <div class="stat">
+                <strong>Security</strong>
+                資安測試
+              </div>
+            </div>
+          </div>
+
+          <div class="card about-text">
+            <p>
+              我的技術方向包含機器學習、電腦視覺、物件偵測、車流辨識、
+              邊緣 AI 部署、Linux 系統整合與網路通訊應用。
+            </p>
+            <p>
+              在智慧交通領域，我關注車流量統計、平均車速估算、事件偵測、
+              即時影像分析與交通資料視覺化，並嘗試將 AI 模型部署到實際設備中運行。
+            </p>
+            <p>
+              在資安方向，我關注 SBOM 軟體物料清單、開源元件風險分析、
+              弱點掃描與 IEC 62443 工控資安要求，協助提升系統在軟體供應鏈與工控環境中的安全性。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-title">
+          <span>Skills</span>
+          <h2>技能列表</h2>
+          <p>涵蓋 AI 模型開發、智慧交通系統整合與資安測試。</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill">
+            <div class="skill-icon">AI</div>
+            <h3>Machine Learning</h3>
+            <p>模型訓練、資料前處理、推論流程設計與模型效能評估。</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">CV</div>
+            <h3>Computer Vision</h3>
+            <p>影像辨識、物件偵測、車輛偵測、追蹤與影像分析應用。</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">ITS</div>
+            <h3>智慧交通系統</h3>
+            <p>車流統計、平均車速、道路事件分析與交通資料整合。</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">PenTest</div>
+            <h3>滲透測試</h3>
+            <p>弱點掃描、網路服務檢測、系統設定檢查與安全風險分析。</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">Python</div>
+            <h3>Python Development</h3>
+            <p>資料處理、自動化腳本、AI 推論流程與工具程式開發。</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">Linux</div>
+            <h3>Linux / Edge AI</h3>
+            <p>Linux 環境部署、邊緣裝置整合、模型推論與服務管理。</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">SBOM</div>
+            <h3>SBOM / 軟體供應鏈安全</h3>
+            <p>建立軟體物料清單，分析開源元件、授權資訊與已知弱點風險。</p>
+          </div>
+
+          <div class="skill">
+            <div class="skill-icon">IEC 62443</div>
+            <h3>IEC 62443 工控資安</h3>
+            <p>理解工控系統資安要求，整理安全等級、檢測項目與設備安全風險。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio">
+      <div class="container">
+        <div class="section-title">
+          <span>Portfolio</span>
+          <h2>作品集</h2>
+          <p>展示 AI、智慧交通與資安檢測相關專案。</p>
+        </div>
+
+        <div class="portfolio-grid">
+          <article class="card project">
+            <div class="project-image">AI 車流辨識系統</div>
+            <div class="project-body">
+              <h3>AI 車流辨識系統</h3>
+              <p>
+                使用物件偵測模型分析道路影像，辨識車輛類型、統計車流量，
+                並可延伸應用於交通監控與即時告警。
+              </p>
+              <div class="tags">
+                <span class="tag">YOLO</span>
+                <span class="tag">Computer Vision</span>
+                <span class="tag">Python</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-image">智慧交通資料分析</div>
+            <div class="project-body">
+              <h3>智慧交通資料分析平台</h3>
+              <p>
+                整合車流百分比、平均車速、偵測事件與時間序列資料，
+                協助進行道路狀態分析與交通管理決策。
+              </p>
+              <div class="tags">
+                <span class="tag">ITS</span>
+                <span class="tag">Data Analysis</span>
+                <span class="tag">Dashboard</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-image">邊緣 AI 部署</div>
+            <div class="project-body">
+              <h3>Edge AI 模型部署</h3>
+              <p>
+                將訓練完成的 AI 模型部署到 Linux 或邊緣運算設備上，
+                進行即時推論、效能調校與系統整合。
+              </p>
+              <div class="tags">
+                <span class="tag">Linux</span>
+                <span class="tag">ONNX</span>
+                <span class="tag">Jetson Nano</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-image">滲透測試報告</div>
+            <div class="project-body">
+              <h3>系統滲透測試與弱點分析</h3>
+              <p>
+                針對 Web 服務、Linux 主機與網路服務進行安全檢測，
+                彙整弱點風險、影響範圍與修補建議。
+              </p>
+              <div class="tags">
+                <span class="tag">Pentest</span>
+                <span class="tag">Vulnerability</span>
+                <span class="tag">Report</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-image">開源元件安全掃描</div>
+            <div class="project-body">
+              <h3>SBOM 與開源元件風險分析</h3>
+              <p>
+                建立軟體物料清單，檢查專案中的開源元件、授權資訊與已知弱點，
+                協助掌握軟體供應鏈安全風險。
+              </p>
+              <div class="tags">
+                <span class="tag">SBOM</span>
+                <span class="tag">OSV</span>
+                <span class="tag">ScanCode</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-image">工控資安檢測</div>
+            <div class="project-body">
+              <h3>IEC 62443 工控資安檢測整理</h3>
+              <p>
+                針對工控與智慧交通設備，整理 IEC 62443 相關安全要求、
+                檢測項目、通訊服務風險與設備安全設定檢查重點。
+              </p>
+              <div class="tags">
+                <span class="tag">IEC 62443</span>
+                <span class="tag">Industrial Security</span>
+                <span class="tag">Risk Assessment</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Links -->
+    <section id="links">
+      <div class="container">
+        <div class="section-title">
+          <span>Links</span>
+          <h2>常用連結</h2>
+          <p>放置技術作品、研究紀錄、程式碼與專業平台。</p>
+        </div>
+
+        <div class="link-grid">
+          <a href="https://github.com/unicorn526" target="_blank" rel="noopener noreferrer" class="link-card">
+            <h3>GitHub</h3>
+            <p>查看我的 AI、智慧交通與資安工具專案</p>
+          </a>
+
+          <a href="#" target="_blank" rel="noopener noreferrer" class="link-card">
+            <h3>LinkedIn</h3>
+            <p>了解我的技術背景、專案經驗與職涯資訊</p>
+          </a>
+
+          <a href="#" class="link-card">
+            <h3>Technical Notes</h3>
+            <p>整理機器學習、Linux、資安檢測與交通系統筆記</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <span>Contact</span>
+          <h2>聯絡方式</h2>
+          <p>歡迎交流 AI 應用、智慧交通、邊緣部署與資安測試相關議題。</p>
+        </div>
+
+        <div class="contact-grid">
+          <a href="mailto:kenneth920526@gmail.com" class="contact-card">
+            <h3>Email</h3>
+            <p>kenneth920526@gmail.com</p>
+          </a>
+
+          <a href="tel:+886911030212" class="contact-card">
+            <h3>Phone</h3>
+            <p>+886 911 030 212</p>
+          </a>
+
+          <div class="contact-card">
+            <h3>Location</h3>
+            <p>NKUST Dept. of Electronic Engineering, Kaohsiung, Taiwan</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> 盧柏安柏安. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="回到頂部">
+    ↑
+  </button>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+    const backToTop = document.getElementById("backToTop");
+    const year = document.getElementById("year");
+
+    year.textContent = new Date().getFullYear();
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 400) {
+        backToTop.classList.add("show");
+      } else {
+        backToTop.classList.remove("show");
+      }
+    });
+
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  </script>
+</body>
+</html>
